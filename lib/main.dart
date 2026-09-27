@@ -63,8 +63,8 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _goToSignUp() {
-    Navigator.pushNamed(context, '/signup');
+  void _goToLogin() {
+    Navigator.pushNamed(context, '/login');
   }
 
   @override
@@ -246,7 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                           recognizer: TapGestureRecognizer()
-                                            ..onTap = _goToSignUp,
+                                            ..onTap = _goToLogin,
                                         ),
                                         const TextSpan(text: ' here.'),
                                       ],
