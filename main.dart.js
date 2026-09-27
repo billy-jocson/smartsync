@@ -81336,7 +81336,7 @@ if(this.d.gK().ug()){s=B.c.hY(this.e.a.a)
 s=s.length!==0?s:"User"
 r=this.c
 r.toString
-A.atU(r,"/login",new A.akB(),s,t.X)}},
+A.atU(r,"/home",new A.akB(),s,t.X)}},
 O(a){return A.a8v(B.lF,null,A.j3(B.bG,A.c([B.lJ,A.KJ(!0,A.a2I(new A.akL(this)),!0)],t.E),B.V,B.bE),!0)}}
 A.akB.prototype={
 $1(a){return!1},
