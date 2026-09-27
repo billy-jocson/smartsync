@@ -32,7 +32,7 @@ class SmartSyncApp extends StatelessWidget {
 }
 
 // ==========================================
-// 1. LOGIN SCREEN
+// LOGIN SCREEN
 // ==========================================
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -271,7 +271,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 // ==========================================
-// 2. SIGN-UP SCREEN
+// SIGN-UP SCREEN
 // ==========================================
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -585,7 +585,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 }
 
 // ==========================================
-// 3. HOME SCREEN (ADAPTIVE BENTO / EQUAL GRID)
+// HOME SCREEN (ADAPTIVE BENTO / EQUAL GRID)
 // ==========================================
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -692,7 +692,6 @@ class HomeScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          // Home is the only screen that requests the blurred background.
           const BackgroundWidget(blurred: true),
           SafeArea(
             child: LayoutBuilder(
@@ -746,9 +745,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 14),
 
-                            // Adaptive Layout
                             if (isMobile)
-                              // 1. Mobile Bento Grid View (6:4 & 4:6 heights)
                               SizedBox(
                                 height: 480,
                                 child: Row(
@@ -800,7 +797,6 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               )
                             else
-                              // 2. Desktop / Non-Mobile View (Equal Height Images Grid)
                               SizedBox(
                                 height: 260,
                                 child: Row(
@@ -864,15 +860,6 @@ class HomeScreen extends StatelessWidget {
 // ==========================================
 // REUSABLE UI WIDGETS
 // ==========================================
-
-/// The shared blurred-image background.
-///
-/// Pass [blurred] = false (the default) for a sharp, non-blurred
-/// background — used on Login and Sign Up.
-///
-/// Pass [blurred] = true to animate the blur + dark overlay in from
-/// nothing over ~900ms — used on Home, so the screen "comes into focus"
-/// the moment it appears.
 class BackgroundWidget extends StatefulWidget {
   final bool blurred;
 
@@ -896,8 +883,7 @@ class _BackgroundWidgetState extends State<BackgroundWidget>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 900),
-      // If this widget is built already-blurred (e.g. hot reload while
-      // on Home), start from the "finished" state instead of animating.
+
       value: widget.blurred ? 0.0 : 0.0,
     );
     _blurAnimation = CurvedAnimation(
@@ -906,7 +892,6 @@ class _BackgroundWidgetState extends State<BackgroundWidget>
     );
 
     if (widget.blurred) {
-      // Wait one frame so the screen is on-screen first, then blur in.
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) _controller.forward();
       });
